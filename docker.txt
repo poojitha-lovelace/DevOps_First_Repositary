@@ -1,3 +1,4 @@
+
 #sudo su -
 #yum install docker
 #service docker start
@@ -43,6 +44,11 @@ Now open a new tab aon chrome and paste the public ip of docker :8081  Now you w
 in goals and options give clean install-->under postbuild actions  search for deploy and select deploy war/ear to a container
 -->under war/ear files give **/*.war-->add container select tomcat 9
 --> credentials as deployer-->tomcat url-->apply and save
+over ssh--
+source file -- target/*
+remove prefix-- target
+remove dict -- /opt/docker
+
 -->Now in mobaxterm
 #cd /opt
 #mkdir docker
@@ -53,7 +59,12 @@ FROM tomcat
 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
 COPY ./*.war  /usr/local/tomcat/webapps
 
+create a image and build container from Dockerfile
 
+docker build -t tom .
+docker run -d --name cont -p 8090:8080 tom
+
+docker ip:8090/warfile_name
 
 
 
