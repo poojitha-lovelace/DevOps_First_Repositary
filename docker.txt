@@ -1,0 +1,47 @@
+#sudo su -
+#yum install docker
+#service docker start
+#vi Dockerfile
+     
+FROM fedora
+RUN yum install java -y
+RUN mkdir  /opt/tomcat
+WORKDIR /opt/tomcat
+ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.16/bin/apache-tomcat-10.1.16.tar.gz .
+RUN tar -xzvf apache-tomcat-10.1.16.tar.gz
+RUN mv apache-tomcat-10.1.16/* /opt/tomcat
+EXPOSE 8080
+CMD ["/opt/tomcat/bin/catalina.sh","run"]
+
+#docker build -t mytomcat .
+#docker run -d --name mycontainer -p 8081:8080 mytomcat
+
+In docker instance add inbound rules 8080 and 8081-9000
+Now open a new tab aon chrome and paste the public ip of docker :8081  Now you will get the tomcat page
+
+
+#useradd dockercse
+# usermod -oG docker dockercse
+#id dockercse
+#vi /etc/ssh/sshd_config
+     change passwd authentcaton to yes
+#passwd dockercse
+   set password
+
+-->In docker go to manage plugins and to available plugins....Now search for publish over ssh and install it
+-->go to system in manage plugins
+     -->in ssh server
+          -->name - any name like dockerhost
+          --> hostname is docker instance private ip
+          -->username (username that you created in mobaxterm)
+          --> In advanced click yhe checkbox password authentication and give password
+          Now apply and save
+-->new item -->give name and select maven project-->give descripton and select github project and give github repository url -->in source code management select git and give git url with .get extension -->under repostory browser select git and give url -->under build triggers select poll scm and give * * * * * in schedule--> in goals and options give clean install-->under postbuild actions  search for deploy and select deploy war/ear to a container -->under war/ear files give **/*.war-->add container select tomcat 9--> credentials as deployer-->tomcat url-->apply and save
+-->Now in mobaxterm
+#cd /opt
+#mkdir docker
+#mv Dockerfile /opt/docker
+#chown -R dockercse:dockercse Dockerfile
+
+
+
