@@ -21,7 +21,7 @@ Now open a new tab aon chrome and paste the public ip of docker :8081  Now you w
 
 
 #useradd dockercse
-# usermod -oG docker dockercse
+# usermod -aG docker dockercse
 #id dockercse
 #vi /etc/ssh/sshd_config
      change passwd authentcaton to yes
