@@ -36,7 +36,13 @@ Now open a new tab aon chrome and paste the public ip of docker :8081  Now you w
           -->username (username that you created in mobaxterm)
           --> In advanced click yhe checkbox password authentication and give password
           Now apply and save
--->new item -->give name and select maven project-->give descripton and select github project and give github repository url -->in source code management select git and give git url with .get extension -->under repostory browser select git and give url -->under build triggers select poll scm and give * * * * * in schedule--> in goals and options give clean install-->under postbuild actions  search for deploy and select deploy war/ear to a container -->under war/ear files give **/*.war-->add container select tomcat 9--> credentials as deployer-->tomcat url-->apply and save
+-->new item -->give name and select maven project-->give descripton and select github project and give github repository url 
+-->in source code management select git and give git url with .get extension 
+-->under repostory browser select git and give url 
+-->under build triggers select poll scm and give * * * * * in schedule--> 
+in goals and options give clean install-->under postbuild actions  search for deploy and select deploy war/ear to a container
+-->under war/ear files give **/*.war-->add container select tomcat 9
+--> credentials as deployer-->tomcat url-->apply and save
 -->Now in mobaxterm
 #cd /opt
 #mkdir docker
