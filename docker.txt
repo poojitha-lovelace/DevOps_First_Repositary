@@ -48,6 +48,12 @@ in goals and options give clean install-->under postbuild actions  search for de
 #mkdir docker
 #mv Dockerfile /opt/docker
 #chown -R dockercse:dockercse Dockerfile
+vi Dockerfile
+FROM tomcat
+RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+COPY ./*.war  /usr/local/tomcat/webapps
+
+
 
 
 
